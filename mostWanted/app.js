@@ -3,6 +3,30 @@
 Build all of your functions for displaying and gathering information below (GUI).
 */
 
+let nameQ = ("Who are you looking for?");
+// let dataNames = data.firstName;
+// function that prompts and validates user input
+function promptFor(question, valid){
+  do{
+    var response = prompt(question).trim();
+  } while(!response || !valid(response));
+  return response;
+}
+console.log(data[0].firstName);
+promptFor(nameQ,chars);
+
+
+// helper function to pass into promptFor to validate yes/no answers
+function yesNo(input){
+  return input.toLowerCase() == "yes" || input.toLowerCase() == "no";
+}
+
+// helper function to pass in as default promptFor validation
+function chars(input){
+  return true; // default validation only
+}
+
+
 // app is the function called to start the entire application
 function app(people){
   let searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
@@ -87,20 +111,4 @@ function displayPerson(person){
   alert(personInfo);
 }
 
-// function that prompts and validates user input
-function promptFor(question, valid){
-  do{
-    var response = prompt(question).trim();
-  } while(!response || !valid(response));
-  return response;
-}
 
-// helper function to pass into promptFor to validate yes/no answers
-function yesNo(input){
-  return input.toLowerCase() == "yes" || input.toLowerCase() == "no";
-}
-
-// helper function to pass in as default promptFor validation
-function chars(input){
-  return true; // default validation only
-}
