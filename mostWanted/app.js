@@ -13,7 +13,7 @@ function promptFor(question, valid){
   return response;
 }
 console.log(data[0].firstName);
-promptFor(nameQ,chars);
+//promptFor(nameQ,chars);
 
 
 // helper function to pass into promptFor to validate yes/no answers
@@ -57,10 +57,11 @@ function mainMenu(person, people){
     return app(people); // restart
   }
 
-  let displayOption = prompt("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want, 'restart', or 'quit'");
+  let displayOption = prompt("Found " + person[0].firstName + " " + person[0].lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want, 'restart', or 'quit'");
 
   switch(displayOption){
     case "info":
+      console.log()
     // TODO: get person's info
     break;
     case "family":
@@ -93,8 +94,8 @@ function searchByName(people){
   })
   // TODO: find the person using the name they entered
   return foundPerson;
+  
 }
-
 // alerts a list of people
 function displayPeople(people){
   alert(people.map(function(person){
