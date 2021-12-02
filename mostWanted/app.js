@@ -61,14 +61,21 @@ function mainMenu(person, people){
 
   switch(displayOption){
     case "info":
-      console.log()
+      console.log(person[0])
     // TODO: get person's info
     break;
     case "family":
+      console.log(person[0].parent)
     // TODO: get person's family
     break;
     case "descendants":
+      //console.log()
     // TODO: get person's descendants
+    // Create a recursive function and what the function will do will create a variable w/ persons ID#, 
+    //filter out any object that doesn't have our persons ID in the parents field 
+    //at the end of the function, we'll call the function again for a new array ("kids array"), this will compare their ID#s to 
+    //all other objects in the data/first array.
+    //if array.lenght is >0 then we'll run the function. When there isn't grandkids/great grandkids it will stop the loop.
     break;
     case "restart":
     app(people); // restart
