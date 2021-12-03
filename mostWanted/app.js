@@ -58,7 +58,7 @@ function mainMenu(person, people){
     return app(people); // restart
   }
 
-  let displayOption = prompt("Found " + person[0].firstName + " " + person[0].lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want, 'restart', or 'quit'");
+  let displayOption = prompt("Found " + person[0].firstName + " " + person[0].lastName + " . Do you want to know their 'info', 'family', or 'd' for descendants? Type the option you want, 'restart', or 'quit'");
 
   switch(displayOption){
     case "info":
@@ -66,18 +66,23 @@ function mainMenu(person, people){
     // TODO: get person's info
     break;
     case "family":
-      console.log(person[0].parent)
+      console.log(person[0].parents)
     // TODO: get person's family
     break;
-    case "descendants":
+    case "d":
+      let personId = person[0].id;
+      data.filter(function([parents]){
+        return (parents == person[0].id);
+      })
+      console.log(parents);
+
       //console.log()
     // TODO: get person's descendants
-    //// TODO: get person's descendants
     // Create a recursive function and what the function will do will create a variable w/ persons ID#, 
-    //filter out any object that doesn't have our persons ID in the parents field 
-    //at the end of the function, we'll call the function again for a new array ("kids array"), this will compare their ID#s to 
-    //all other objects in the data/first array.
-    //if array.lenght is >0 then we'll run the function. When there isn't grandkids/great grandkids it will stop the loop.
+    // filter out any object that doesn't have our persons ID in the parents field 
+    // at the end of the function, we'll call the function again for a new array ("kids array"), this will 
+    // compare their ID#s to all other objects in the data/first array.
+    // if array.lenght is >0 then we'll run the function. When there isn't grandkids/great grandkids it will stop the loop.
     break;
     case "restart":
     app(people); // restart
