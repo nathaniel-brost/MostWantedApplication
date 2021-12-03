@@ -71,9 +71,13 @@ function mainMenu(person, people){
     break;
     case "d":
       let personId = person[0].id;
-      data.filter(function([parents]){
+      let result = people.filter(findKids)
+        function findKids(el){
+          if (personId == people.parents[0] || personId == people.parents[1]){
+            return 
+          }
+        }
         return (parents == person[0].id);
-      })
       console.log(parents);
 
       //console.log()
@@ -127,3 +131,4 @@ function displayPerson(person){
 }
 
 
+/// test this git hub
