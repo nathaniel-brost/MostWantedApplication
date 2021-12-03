@@ -71,14 +71,18 @@ function mainMenu(person, people){
     break;
     case "d":
       let personId = person[0].id;
+      let parentId;
       let result = people.filter(findKids)
-        function findKids(el){
-          if (personId == people.parents[0] || personId == people.parents[1]){
-            return 
+        function findKids(el)
+        {
+          parentId = el.parents[0];
+          if (personId == parentId){ //|| personId == people.parents[1])
+            return true;
           }
         }
-        return (parents == person[0].id);
-      console.log(parents);
+        console.log(result);
+        //return (parents == person[0].id);
+      //console.log(parents);
 
       //console.log()
     // TODO: get person's descendants
