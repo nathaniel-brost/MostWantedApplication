@@ -72,25 +72,25 @@ function mainMenu(person, people){
     case "d":
       let personId = person[0].id;
       let parentId;
+      let parentIdTwo;
       let result = people.filter(findKids)
-        function findKids(el)
-        {
+        function findKids(el){
           parentId = el.parents[0];
-          if (personId == parentId){ //|| personId == people.parents[1])
+          parentIdTwo = el.parents[1];
+          if (personId == parentId || personId == parentIdTwo){
             return true;
           }
+          // return findKids;
         }
         console.log(result);
-        //return (parents == person[0].id);
-      //console.log(parents);
 
       //console.log()
-    // TODO: get person's descendants
-    // Create a recursive function and what the function will do will create a variable w/ persons ID#, 
-    // filter out any object that doesn't have our persons ID in the parents field 
-    // at the end of the function, we'll call the function again for a new array ("kids array"), this will 
-    // compare their ID#s to all other objects in the data/first array.
-    // if array.lenght is >0 then we'll run the function. When there isn't grandkids/great grandkids it will stop the loop.
+      // TODO: get person's descendants
+      // Create a recursive function and what the function will do will create a variable w/ persons ID#, 
+      // filter out any object that doesn't have our persons ID in the parents field 
+      // at the end of the function, we'll call the function again for a new array ("kids array"), this will 
+      // compare their ID#s to all other objects in the data/first array.
+      // if array.lenght is >0 then we'll run the function. When there isn't grandkids/great grandkids it will stop the loop.
     break;
     case "restart":
     app(people); // restart
