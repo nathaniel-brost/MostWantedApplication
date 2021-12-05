@@ -37,7 +37,29 @@ function app(people){
       searchResults = searchByName(people);
       break;
     case 'no':
-      // TODO: search by traits
+      let genArray = [];
+      let userInputGender = prompt("Enter a gender; 'female' or 'male'; 'N' for Next");
+        genArray = people.filter(function(el){
+          return (el.gender == userInputGender);
+        });
+      console.log(genArray);
+
+      let heightArray = [];
+      let userInputHeight = prompt("Enter the person's height in inches; type 'N' for Next"); 
+        heightArray = genArray.filter(function(el){
+          return (el.height == userInputHeight);
+        })
+      console.log(heightArray);
+
+      // let userInputWeight = 
+
+      // let userInputEye = 
+
+      // let userInputOccupation = 
+
+
+
+
       break;
       default:
     app(people); // restart app
