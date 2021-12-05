@@ -122,15 +122,40 @@ function mainMenu(person, people){
   //   return app(people); // restart
   // }
 
-  let displayOption = prompt("Found " + person[0].firstName + " " + person[0].lastName + " . Do you want to know their 'info', 'family', or 'd' for descendants? Type the option you want, 'restart', or 'quit'");
+  let displayOption = prompt("Found " + person[0].firstName + " " + person[0].lastName + " . Do you want to know their 'i' for info, 'f' for family, or 'd' for descendants? Type the option you want, 'restart', or 'quit'");
 
   switch(displayOption){
-    case "info":
+    case "i":
       console.log(person[0])
     // TODO: get person's info
     break;
-    case "family":
+    case "f":
       console.log(person[0].parents)
+      console.log(person[0].currentSpouse)
+
+      // let parentsNames = [];
+      let myPersonsParentsID = person[0].parents;
+      let parentsNames = people.filter(function(el){
+        return (el.id == myPersonsParentsID);
+      })
+      console.log(parentsNames);
+      // console.log(myPersonsParentsID);
+
+      // myPersonsParentsID
+      let siblingsNames = people.filter(function(el){
+        return (el.parents == myPersonsParentsID);
+      })
+      console.log(siblingsNames);
+
+      let myPersonsSpouseID = person[0].currentSpouse;
+      let spouseName = people.filter(function(el){
+        return (el.id == myPersonsSpouseID);
+      })
+      console.log(spouseName);
+      // console.log(spouseName.firstName);
+
+      
+
     // TODO: get person's family
     break;
     case "d":
