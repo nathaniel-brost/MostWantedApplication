@@ -39,23 +39,36 @@ function app(people){
     case 'no':
       let genArray = [];
       let userInputGender = prompt("Enter a gender; 'female' or 'male'; 'N' for Next");
-        genArray = people.filter(function(el){
-          return (el.gender == userInputGender);
-        });
+      genArray = people.filter(function(el){
+        return (el.gender == userInputGender);
+      });
       console.log(genArray);
 
       let heightArray = [];
-      let userInputHeight = prompt("Enter the person's height in inches; type 'N' for Next"); 
-        heightArray = genArray.filter(function(el){
-          return (el.height == userInputHeight);
-        })
+      let userInputHeight = prompt("Enter the person's height in inches; 'N' for Next"); 
+      heightArray = genArray.filter(function(el){
+        return (el.height == userInputHeight);
+      });
       console.log(heightArray);
 
-      // let userInputWeight = 
+      let weightArray = [];
+      let userInputWeight = prompt("Enter the person's weight in pounds; 'N' for Next");
+      weightArray = heightArray.filter(function(el){
+        return (el.weight == userInputWeight);
+      });
 
-      // let userInputEye = 
+      let eyeArray = [];
+      let userInputEye = prompt("Enter the person's eye color; 'N' for Next");
+      eyeArray = weightArray.filter(function(el){
+        return (el.eyeColor == userInputEye);
+      });
 
-      // let userInputOccupation = 
+      let occArray = [];
+      let userInputOccupation = prompt("Enter the person's occupation; 'N' for Next");
+      occArray = eyeArray.filter(function(el){
+        return (el.occupation == userInputOccupation);
+      })
+      console.log(occArray);
 
 
 
