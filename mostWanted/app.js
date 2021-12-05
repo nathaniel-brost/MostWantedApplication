@@ -30,7 +30,7 @@ function chars(input){
 
 // app is the function called to start the entire application
 function app(people){
-  let searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
+  let searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'.", yesNo).toLowerCase();
   let searchResults;
   switch(searchType){
     case 'yes':
@@ -38,20 +38,22 @@ function app(people){
       break;
     case 'no':
       let genArray = [];
-      let userInputGender = prompt("Enter a gender; 'female' or 'male'; 'n' for Next");
-      if (userInputGender == "female" || "male"){
+      let userQ1 = prompt("Do you know the person's gender? Enter 'yes' or 'no'.");
+      if (userQ1 == "yes"){
+        let userInputGender = prompt("Enter a gender; 'female' or 'male'");
         genArray = people.filter(function(el){
           return (el.gender == userInputGender);
         });
       }
-      else if (userInputGender == "n"){
+      else {
         genArray = people;
       }
       console.log(genArray);
 
       let heightArray = [];
-      let userInputHeight = prompt("Enter the person's height in inches; 'N' for Next"); 
-      if (userInputHeight <= "77"){
+      let userQ2 = prompt("Do you know the person's height? Enter 'yes' or 'no'.");
+      if (userQ2 == "yes"){
+        let userInputHeight = prompt("Enter the person's height in inches."); 
         heightArray = genArray.filter(function(el){
           return (el.height == userInputHeight);
         });
@@ -62,26 +64,43 @@ function app(people){
       console.log(heightArray);
 
       let weightArray = [];
-      let userInputWeight = prompt("Enter the person's weight in pounds; 'N' for Next");
-      weightArray = heightArray.filter(function(el){
-        return (el.weight == userInputWeight);
-      });
+      let userQ3 = prompt("Do you know the person's weight? Enter 'yes' or 'no'.");
+      if (userQ3 == "yes"){
+        let userInputWeight = prompt("Enter the person's weight in pounds.");
+        weightArray = heightArray.filter(function(el){
+          return (el.weight == userInputWeight);
+        });
+      }
+      else {
+        weightArray = heightArray;
+      }
+      console.log(weightArray);
 
       let eyeArray = [];
-      let userInputEye = prompt("Enter the person's eye color; 'N' for Next");
-      eyeArray = weightArray.filter(function(el){
-        return (el.eyeColor == userInputEye);
-      });
+      let userQ4 = prompt("Do you know the person's eye color? Enter 'yes' or 'no'.");
+      if (userQ4 == "yes"){
+        let userInputEye = prompt("Enter the person's eye color.");
+        eyeArray = weightArray.filter(function(el){
+          return (el.eyeColor == userInputEye);
+        });
+      }
+      else {
+        eyeArray = weightArray;
+      }
+      console.log(eyeArray);
 
       let occArray = [];
-      let userInputOccupation = prompt("Enter the person's occupation; 'N' for Next");
-      occArray = eyeArray.filter(function(el){
-        return (el.occupation == userInputOccupation);
-      })
+      let userQ5 = prompt("Do you know the person's occupation? Enter 'yes' or 'no'.");
+      if (userQ5 == "yes"){
+        let userInputOccupation = prompt("Enter the person's occupation.");
+        occArray = eyeArray.filter(function(el){
+          return (el.occupation == userInputOccupation);
+        })
+      }
+      else {
+        occArray = eyeArray;
+      }
       console.log(occArray);
-
-
-
 
       break;
       default:
@@ -98,10 +117,10 @@ function mainMenu(person, people){
 
   /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
 
-  if(!person){
-    alert("Could not find that individual.");
-    return app(people); // restart
-  }
+  // if(!person){
+  //   alert("Could not find that individual.");
+  //   return app(people); // restart
+  // }
 
   let displayOption = prompt("Found " + person[0].firstName + " " + person[0].lastName + " . Do you want to know their 'info', 'family', or 'd' for descendants? Type the option you want, 'restart', or 'quit'");
 
