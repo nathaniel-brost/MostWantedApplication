@@ -38,17 +38,27 @@ function app(people){
       break;
     case 'no':
       let genArray = [];
-      let userInputGender = prompt("Enter a gender; 'female' or 'male'; 'N' for Next");
-      genArray = people.filter(function(el){
-        return (el.gender == userInputGender);
-      });
+      let userInputGender = prompt("Enter a gender; 'female' or 'male'; 'n' for Next");
+      if (userInputGender == "female" || "male"){
+        genArray = people.filter(function(el){
+          return (el.gender == userInputGender);
+        });
+      }
+      else if (userInputGender == "n"){
+        genArray = people;
+      }
       console.log(genArray);
 
       let heightArray = [];
       let userInputHeight = prompt("Enter the person's height in inches; 'N' for Next"); 
-      heightArray = genArray.filter(function(el){
-        return (el.height == userInputHeight);
-      });
+      if (userInputHeight <= "77"){
+        heightArray = genArray.filter(function(el){
+          return (el.height == userInputHeight);
+        });
+      }
+      else {
+        heightArray = genArray;
+      }        
       console.log(heightArray);
 
       let weightArray = [];
