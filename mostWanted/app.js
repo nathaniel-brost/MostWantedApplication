@@ -102,9 +102,9 @@ function app(people){
         occArray = eyeArray;
       }
       console.log(occArray);
-      
+
       if (occArray.length == 1){
-        searchResults = occArray[0];
+        searchResults = occArray;
       }
       else if (occArray.length > 1){
         alert("Your need to filter your results further.")
