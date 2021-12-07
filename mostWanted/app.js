@@ -29,6 +29,7 @@ function chars(input){
 
 
 // app is the function called to start the entire application
+let occArray =[];
 function app(people){
   let searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'.", yesNo).toLowerCase();
   let searchResults;
@@ -89,7 +90,7 @@ function app(people){
       }
       console.log(eyeArray);
 
-      let occArray = [];
+      occArray = [];
       let userQ5 = prompt("Do you know the person's occupation? Enter 'yes' or 'no'.");
       if (userQ5 == "yes"){
         let userInputOccupation = prompt("Enter the person's occupation.");
@@ -101,7 +102,14 @@ function app(people){
         occArray = eyeArray;
       }
       console.log(occArray);
-
+      
+      if (occArray.length == 1){
+        searchResults = occArray[0];
+      }
+      else if (occArray.length > 1){
+        alert("Your need to filter your results further.")
+        app(people);
+      }
       break;
       default:
     app(people); // restart app
@@ -109,7 +117,9 @@ function app(people){
   }
   
   // Call the mainMenu function ONLY after you find the SINGLE person you are looking for
+  
   mainMenu(searchResults, people);
+
 }
 
 // Menu function to call once you find who you are looking for
@@ -117,11 +127,12 @@ function mainMenu(person, people){
 
   /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
 
-  // if(!person){
-  //   alert("Could not find that individual.");
-  //   return app(people); // restart
-  // }
 
+  if (!person){
+    alert("Could not find that individual.");
+    return app(people); // restart
+  }
+  
   let displayOption = prompt("Found " + person[0].firstName + " " + person[0].lastName + " . Do you want to know their 'i' for info, 'f' for family, or 'd' for descendants? Type the option you want, 'restart', or 'quit'");
 
   switch(displayOption){
@@ -150,24 +161,47 @@ function mainMenu(person, people){
           return (el.id == myPersonsParentsID);
         })
       }
-      console.log("These are your person's parents:");
-      console.log(parentsNames);
+      if (parentsNames.length == 1){
+        console.log("This is your person's parent:");
+        console.log(parentsNames);
+      }
+      else if (parentsNames.length == 2){  
+        console.log("These are your person's parents:");
+        console.log(parentsNames);
+      }  
+      else {
+        console.log("Your person does not have any parents in this database");
+      }
 
       // list siblings
       let myId = person[0].id;
       let siblingsNames = people.filter(function(el){
         return (el.parents[0] == myPersonsParentsID[0] && el.id != myId && person[0].parents.length != 0);
       })
-      console.log("These are your person's siblings:");
-      console.log(siblingsNames);
+      if (siblingsNames.length > 1){
+        console.log("These are your person's siblings:");
+        console.log(siblingsNames);
+      }
+      else if (siblingsNames.length == 1){
+        console.log("This is your person's sibling:");
+        console.log(siblingsNames);
+      }
+      else {
+        console.log("Your person does not have siblings in this database");
+      }
 
       // list spouse
       let myPersonsSpouseID = person[0].currentSpouse;
       let spouseName = people.filter(function(el){
         return (el.id == myPersonsSpouseID);
       })
-      console.log("This is your person's spouse:");
-      console.log(spouseName);
+      if (spouseName.length == 1){
+        console.log("This is your person's spouse:");
+        console.log(spouseName);
+      }
+      else {
+        console.log("Your person is single and ready to mingle");
+      }
       // console.log(spouseName.firstName);
 
       
@@ -241,3 +275,6 @@ function displayPerson(person){
 
 
 /// test this git hub
+/// shoudln;t print to console - alert like alert on 271
+/// create a funcion with 5 level seeacing, call that function in the "no" case
+// function find family
