@@ -130,9 +130,7 @@ function mainMenu(person, people){
     // TODO: get person's info
     break;
     case "f":
-      // console.log(person[0].parents)
-      // console.log(person[0].currentSpouse)
-
+      // list parents
       let parentsNames = [];
       let myPersonsParentsID = [];
       myPersonsParentsID = person[0].parents;
@@ -152,18 +150,23 @@ function mainMenu(person, people){
           return (el.id == myPersonsParentsID);
         })
       }
+      console.log("These are your person's parents:");
       console.log(parentsNames);
 
-
+      // list siblings
+      let myId = person[0].id;
       let siblingsNames = people.filter(function(el){
-        return (el.parents == myPersonsParentsID);
+        return (el.parents[0] == myPersonsParentsID[0] && el.id != myId && person[0].parents.length != 0);
       })
+      console.log("These are your person's siblings:");
       console.log(siblingsNames);
 
+      // list spouse
       let myPersonsSpouseID = person[0].currentSpouse;
       let spouseName = people.filter(function(el){
         return (el.id == myPersonsSpouseID);
       })
+      console.log("This is your person's spouse:");
       console.log(spouseName);
       // console.log(spouseName.firstName);
 
