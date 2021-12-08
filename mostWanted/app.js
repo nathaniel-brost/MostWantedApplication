@@ -137,7 +137,7 @@ function mainMenu(person, people){
 
   switch(displayOption){
     case "i":
-      console.log(person[0])
+      // console.log(person[0])
       alert("This is your person's info:"
        + "\n" + "Full name:" + " " + person[0].firstName + " " + person[0].lastName
        + "\n" + "ID:" + " " + person[0].id
@@ -172,13 +172,16 @@ function mainMenu(person, people){
         })
       }
       if (parentsNames.length == 1){
+        //console.log("This is your person's parent:" + "\n" + parentsNames);
+        console.log("This is your person's parent:");
+        console.log(parentsNames);
         alert("This is your person's parent:" + "\n" + parentsNames[0].firstName + parentsNames[0].lastName);
-        //console.log(parentsNames);
       }
       else if (parentsNames.length == 2){ 
-        alert("These are your person's parents:" + "\n" + parentsNames[0].firstName + parentsNames[0].lastName);
-        //console.log("These are your person's parents:");
-        //console.log(parentsNames);
+        //console.log("These are your person's parents:" + "\n" + parentsNames[0] + parentsNames[1]);
+        console.log("These are your person's parents:");
+        console.log(parentsNames);
+        alert("These are your person's parents:" + "\n" + parentsNames);
       }  
       else {
         alert("Your person does not have any parents in this database");
@@ -191,12 +194,16 @@ function mainMenu(person, people){
         return (el.parents[0] == myPersonsParentsID[0] && el.id != myId && person[0].parents.length != 0);
       })
       if (siblingsNames.length > 1){
+        //console.log("These are your person's siblings:" + "\n" + siblingsNames);
+        console.log("These are your person's siblings:");
+        console.log(siblingsNames);
         alert("These are your person's siblings:" + "\n" + siblingsNames);
-        // console.log(siblingsNames);
       }
       else if (siblingsNames.length == 1){
+        //console.log("This is your person's sibling:" + "\n" + siblingsNames);
+        console.log("This is your person's sibling:");
+        console.log(siblingsNames);
         alert("This is your person's sibling:" + "\n" + siblingsNames);
-        // console.log(siblingsNames);
       }
       else {
         alert("Your person does not have siblings in this database");
@@ -208,8 +215,10 @@ function mainMenu(person, people){
         return (el.id == myPersonsSpouseID);
       })
       if (spouseName.length == 1){
+        //console.log("This is your person's spouse:" + "\n" + spouseName);
+        console.log("This is your person's spouse:");
+        console.log(spouseName);
         alert("This is your person's spouse:" + "\n" + spouseName);
-        // console.log(spouseName);
       }
       else {
         alert("Your person is single and ready to mingle");
@@ -242,14 +251,8 @@ function mainMenu(person, people){
       findDescendants(person, people); //calling a function 
       console.log("These are your person's descendants:")
       console.log(placeHolder);
-
-      //console.log()
-      // TODO: get person's descendants
-      // Create a recursive function and what the function will do will create a variable w/ persons ID#, 
-      // filter out any object that doesn't have our persons ID in the parents field 
-      // at the end of the function, we'll call the function again for a new array ("kids array"), this will 
-      // compare their ID#s to all other objects in the data/first array.
-      // if array.lenght is >0 then we'll run the function. When there isn't grandkids/great grandkids it will stop the loop.
+      alert("These are your person's descendants");
+      
     break;
     case "restart":
     app(people); // restart
