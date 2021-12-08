@@ -165,12 +165,14 @@ function mainMenu(person, people){
         console.log("This is your person's parent:");
         console.log(parentsNames);
       }
-      else if (parentsNames.length == 2){  
-        console.log("These are your person's parents:");
-        console.log(parentsNames);
+      else if (parentsNames.length == 2){ 
+        alert("These are your person's parents:" + "\n" + parentsNames);
+        //console.log("These are your person's parents:");
+        //console.log(parentsNames);
       }  
       else {
-        console.log("Your person does not have any parents in this database");
+        alert("Your person does not have any parents in this database");
+        //console.log("Your person does not have any parents in this database");
       }
 
       // list siblings
@@ -209,19 +211,30 @@ function mainMenu(person, people){
     // TODO: get person's family
     break;
     case "d":
-      let personId = person[0].id;
-      let parentId;
-      let parentIdTwo;
-      let result = people.filter(findKids)
-        function findKids(el){
-          parentId = el.parents[0];
-          parentIdTwo = el.parents[1];
-          if (personId == parentId || personId == parentIdTwo){
-            return true;
+      function findDescendants(person, people){ //function declaration
+          // let tally = 0;
+          // if(tally != 0){
+          //   return result;
+          // }
+          // else()
+        // let personId =[]
+        let personId = person[0].id;
+        // let parentId;
+        // let parentIdTwo;
+        let result = people.filter(findKids)
+          function findKids(el){
+            //parentId = el.parents[0];
+            //parentIdTwo = el.parents[1];
+            //if (personId == parentId || personId == parentIdTwo){
+            if (personId == el.parents[0] || personId == el.parents[1]){
+              return true;
+            //  personId = result[i].id;
+            }
+            // return findKids;
           }
-          // return findKids;
-        }
-        console.log(result);
+          console.log(result);
+      }
+      findDescendants(person, people); //calling a function 
 
       //console.log()
       // TODO: get person's descendants
