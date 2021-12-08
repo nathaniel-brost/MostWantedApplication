@@ -212,28 +212,26 @@ function mainMenu(person, people){
     break;
     case "d":
       function findDescendants(person, people){ //function declaration
-          // let tally = 0;
-          // if(tally != 0){
-          //   return result;
-          // }
-          // else()
-        // let personId =[]
-        let personId = person[0].id;
-        // let parentId;
-        // let parentIdTwo;
-        let result = people.filter(findKids)
+
+        for (let i=0; i<person.length; i++){
+          let personId = person[i].id;
+          let result = people.filter(findKids)
           function findKids(el){
-            //parentId = el.parents[0];
-            //parentIdTwo = el.parents[1];
-            //if (personId == parentId || personId == parentIdTwo){
             if (personId == el.parents[0] || personId == el.parents[1]){
               return true;
-            //  personId = result[i].id;
             }
-            // return findKids;
           }
+          for (let i=0; i < result.length; i++){
+            placeHolder.push(result[i]);
+          }
+            findDescendants(result, people);
+        }
           console.log(result);
+          console.log(placeHolder);
+
       }
+      let placeHolder = []
+
       findDescendants(person, people); //calling a function 
 
       //console.log()
