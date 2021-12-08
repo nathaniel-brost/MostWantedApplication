@@ -49,7 +49,7 @@ function app(people){
       else {
         genArray = people;
       }
-      console.log(genArray);
+      // console.log(genArray);
 
       let heightArray = [];
       let userQ2 = prompt("Do you know the person's height? Enter 'yes' or 'no'.");
@@ -62,7 +62,7 @@ function app(people){
       else {
         heightArray = genArray;
       }        
-      console.log(heightArray);
+      // console.log(heightArray);
 
       let weightArray = [];
       let userQ3 = prompt("Do you know the person's weight? Enter 'yes' or 'no'.");
@@ -75,7 +75,7 @@ function app(people){
       else {
         weightArray = heightArray;
       }
-      console.log(weightArray);
+      // console.log(weightArray);
 
       let eyeArray = [];
       let userQ4 = prompt("Do you know the person's eye color? Enter 'yes' or 'no'.");
@@ -88,7 +88,7 @@ function app(people){
       else {
         eyeArray = weightArray;
       }
-      console.log(eyeArray);
+      // console.log(eyeArray);
 
       occArray = [];
       let userQ5 = prompt("Do you know the person's occupation? Enter 'yes' or 'no'.");
@@ -101,7 +101,7 @@ function app(people){
       else {
         occArray = eyeArray;
       }
-      console.log(occArray);
+      // console.log(occArray);
 
       if (occArray.length == 1){
         searchResults = occArray;
@@ -138,6 +138,16 @@ function mainMenu(person, people){
   switch(displayOption){
     case "i":
       console.log(person[0])
+      alert("This is your person's info:"
+       + "\n" + "Full name:" + " " + person[0].firstName + " " + person[0].lastName
+       + "\n" + "ID:" + " " + person[0].id
+       + "\n" + "Gender:" + " " + person[0].gender
+       + "\n" + "Date of birth:" + " " + person[0].dob
+       + "\n" + "Height in inches:" + " " + person[0].height
+       + "\n" + "Weight in pounds:" + " " + person[0].weight
+       + "\n" + "Eye color:" + " " + person[0].eyeColor
+       + "\n" + "Occupation:" + " " + person[0].occupation
+      )
     // TODO: get person's info
     break;
     case "f":
@@ -162,11 +172,11 @@ function mainMenu(person, people){
         })
       }
       if (parentsNames.length == 1){
-        console.log("This is your person's parent:");
-        console.log(parentsNames);
+        alert("This is your person's parent:" + "\n" + parentsNames[0].firstName + parentsNames[0].lastName);
+        //console.log(parentsNames);
       }
       else if (parentsNames.length == 2){ 
-        alert("These are your person's parents:" + "\n" + parentsNames);
+        alert("These are your person's parents:" + "\n" + parentsNames[0].firstName + parentsNames[0].lastName);
         //console.log("These are your person's parents:");
         //console.log(parentsNames);
       }  
@@ -181,15 +191,15 @@ function mainMenu(person, people){
         return (el.parents[0] == myPersonsParentsID[0] && el.id != myId && person[0].parents.length != 0);
       })
       if (siblingsNames.length > 1){
-        console.log("These are your person's siblings:");
-        console.log(siblingsNames);
+        alert("These are your person's siblings:" + "\n" + siblingsNames);
+        // console.log(siblingsNames);
       }
       else if (siblingsNames.length == 1){
-        console.log("This is your person's sibling:");
-        console.log(siblingsNames);
+        alert("This is your person's sibling:" + "\n" + siblingsNames);
+        // console.log(siblingsNames);
       }
       else {
-        console.log("Your person does not have siblings in this database");
+        alert("Your person does not have siblings in this database");
       }
 
       // list spouse
@@ -198,13 +208,12 @@ function mainMenu(person, people){
         return (el.id == myPersonsSpouseID);
       })
       if (spouseName.length == 1){
-        console.log("This is your person's spouse:");
-        console.log(spouseName);
+        alert("This is your person's spouse:" + "\n" + spouseName);
+        // console.log(spouseName);
       }
       else {
-        console.log("Your person is single and ready to mingle");
+        alert("Your person is single and ready to mingle");
       }
-      // console.log(spouseName.firstName);
 
       
 
@@ -226,13 +235,13 @@ function mainMenu(person, people){
           }
             findDescendants(result, people);
         }
-          console.log(result);
-          console.log(placeHolder);
 
       }
       let placeHolder = []
 
       findDescendants(person, people); //calling a function 
+      console.log("These are your person's descendants:")
+      console.log(placeHolder);
 
       //console.log()
       // TODO: get person's descendants
